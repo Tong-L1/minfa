@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<style>.link {  fill: none;  stroke: #666;  stroke-width: 1.5px;}#licensing {  fill: green;}.link.licensing {  stroke: green;}.link.resolved {  stroke-dasharray: 0,2 1;}circle {  fill: #ccc;  stroke: #333;  stroke-width: 1.5px;}text {  font: 12px Microsoft YaHei;  pointer-events: none;  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;}.linetext {    font-size: 12px Microsoft YaHei;}</style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	<!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><i class="fa fa-comments"></i> <strong>MASTER </strong></a>
+            </div>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                   <li>
+                        <a href="index.html"><i class="fa fa-dashboard" ></i> 首页 </a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="tupu.html"><i class="fa fa-desktop"></i> 知识图谱</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+      
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+      <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
+    
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+var links = 
+	[
+		{source: '总则', target: '基本规定', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '自然人', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '法人', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '非法人组织', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '民事权力', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '民事法律行为', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '代理', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '民事责任', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '诉讼时效', type: 'resolved' ,'rela': '包括'},
+		{source: '总则', target: '期间计算', type: 'resolved' ,'rela': '包括'},
+
+		{source: '物权', target: '通则', type: 'resolved' ,'rela': '包括'},
+			{source: '通则', target: '物权的保护', type: 'resolved' ,'rela': '包括'},
+			{source: '通则', target: '物权的设立、变更、转让和消灭', type: 'resolved' ,'rela': '包括'},
+				{source: '物权的设立、变更、转让和消灭', target: '不动产登记', type: 'resolved' ,'rela': '包括'},
+				{source: '物权的设立、变更、转让和消灭', target: '动产交付', type: 'resolved' ,'rela': '包括'},
+				{source: '物权的设立、变更、转让和消灭', target: '其他规定', type: 'resolved' ,'rela': '包括'},
+		{source: '物权', target: '所有权', type: 'resolved' ,'rela': '包括'},
+			{source: '所有权', target: '国家所有权和集体所有权、私人所有权', type: 'resolved' ,'rela': '包括'},
+			{source: '所有权', target: '业主的建筑物区分所有权', type: 'resolved' ,'rela': '包括'},
+			{source: '所有权', target: '相邻关系', type: 'resolved' ,'rela': '包括'},
+			{source: '所有权', target: '共有', type: 'resolved' ,'rela': '包括'},
+			{source: '所有权', target: '所有权取得的特别规定', type: 'resolved' ,'rela': '包括'},
+		{source: '物权', target: '用益物权', type: 'resolved' ,'rela': '包括'},
+			{source: '用益物权', target: '土地承包经营权', type: 'resolved' ,'rela': '包括'},
+			{source: '用益物权', target: '建设用地使用权', type: 'resolved' ,'rela': '包括'},
+			{source: '用益物权', target: '宅基地使用权', type: 'resolved' ,'rela': '包括'},
+			{source: '用益物权', target: '居住权', type: 'resolved' ,'rela': '包括'},
+			{source: '用益物权', target: '地役权', type: 'resolved' ,'rela': '包括'},
+		{source: '物权', target: '担保物权', type: 'resolved' ,'rela': '包括'},
+			{source: '担保物权', target: '抵押权', type: 'resolved' ,'rela': '包括'},
+			{source: '担保物权', target: '质权', type: 'resolved' ,'rela': '包括'},
+			{source: '担保物权', target: '留置权', type: 'resolved' ,'rela': '包括'},
+		{source: '物权', target: '占有', type: 'resolved' ,'rela': '包括'},
+
+		{source: '合同', target: '通则 ', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '合同的订立', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '合同的效力', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '合同的履行', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '合同的保全', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '合同的变更和转让', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '合同的权利义务终止', type: 'resolved' ,'rela': '包括'},
+			{source: '通则 ', target: '违约责任', type: 'resolved' ,'rela': '包括'},
+		{source: '合同', target: '典型合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '买卖合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '供用电、水、气、热力合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '赠与合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '借款合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '保证合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '租赁合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '融资租赁合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '保理合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '承揽合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '建设工程合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '运输合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '技术合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '保管合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '仓储合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '委托合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '物业服务合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '行纪合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '中介合同', type: 'resolved' ,'rela': '包括'},
+			{source: '典型合同', target: '合伙合同', type: 'resolved' ,'rela': '包括'},
+		{source: '合同', target: '准合同', type: 'resolved' ,'rela': '包括'},
+			{source: '准合同', target: '无因管理', type: 'resolved' ,'rela': '包括'},
+			{source: '准合同', target: '不当得利', type: 'resolved' ,'rela': '包括'},
+
+		{source: '人格权', target: '生命权、身体权和健康权', type: 'resolved' ,'rela': '包括'},
+		{source: '人格权', target: '姓名权和名称权', type: 'resolved' ,'rela': '包括'},
+		{source: '人格权', target: '肖像权', type: 'resolved' ,'rela': '包括'},
+		{source: '人格权', target: '名誉权和荣誉权', type: 'resolved' ,'rela': '包括'},
+		{source: '人格权', target: '隐私权和个人信息保护', type: 'resolved' ,'rela': '包括'},
+
+		{source: '婚姻家庭', target: '结婚', type: 'resolved' ,'rela': '包括'},
+		{source: '婚姻家庭', target: '家庭关系', type: 'resolved' ,'rela': '包括'},
+			{source: '家庭关系', target: '夫妻关系', type: 'resolved' ,'rela': '包括'},
+			{source: '家庭关系', target: '父母子女关系和其他近亲属关系', type: 'resolved' ,'rela': '包括'},
+		{source: '婚姻家庭', target: '离婚', type: 'resolved' ,'rela': '包括'},
+		{source: '婚姻家庭', target: '收养', type: 'resolved' ,'rela': '包括'},
+			{source: '收养', target: '收养关系的成立', type: 'resolved' ,'rela': '包括'},
+			{source: '收养', target: '收养的效力', type: 'resolved' ,'rela': '包括'},
+			{source: '收养', target: '收养关系的解除', type: 'resolved' ,'rela': '包括'},
+
+		{source: '继承', target: '法定继承', type: 'resolved' ,'rela': '包括'},
+		{source: '继承', target: '遗嘱继承和遗赠', type: 'resolved' ,'rela': '包括'},
+		{source: '继承', target: '遗产的处理', type: 'resolved' ,'rela': '包括'},
+
+		{source: '侵权责任', target: '损害赔偿', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '任主体的特殊规定', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '产品责任', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '机动车交通事故责任', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '医疗损害责任', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '环境污染和生态破坏责任', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '高度危险责任', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '饲养动物损害责任', type: 'resolved' ,'rela': '包括'},
+		{source: '侵权责任', target: '建筑物和物件损害责任', type: 'resolved' ,'rela': '包括'}
+		]
+	;
+
+var nodes = {};
+
+links.forEach(function(link)
+{
+  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+});
+
+var width = 2500, height = 2500;
+
+var force = d3.layout.force()
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(180)
+    .charge(-1500)
+    .on("tick", tick)
+    .start();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var marker=
+    svg.append("marker")
+    .attr("id", "resolved")
+    .attr("markerUnits","userSpaceOnUse")
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX",32)
+    .attr("refY", -1)
+    .attr("markerWidth", 12)
+    .attr("markerHeight", 12)
+    .attr("orient", "auto")
+    .attr("stroke-width",2)
+    .append("path")
+    .attr("d", "M0,-5L10,0L0,5")
+    .attr('fill','white');
+
+var edges_line = svg.selectAll(".edgepath")
+    .data(force.links())
+    .enter()
+    .append("path")
+    .attr({
+          'd': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
+          'class':'edgepath',
+          'id':function(d,i) {return 'edgepath'+i;}})
+    .style("stroke",function(d){
+         var lineColor;
+		 lineColor="white";
+         return lineColor;
+     })
+    .style("pointer-events", "none")
+    .style("stroke-width",0.5)
+    .attr("marker-end", "url(#resolved)" );
+
+var edges_text = svg.append("g").selectAll(".edgelabel")
+.data(force.links())
+.enter()
+.append("text")
+.style("pointer-events", "none")
+.attr({  'class':'edgelabel',
+               'id':function(d,i){return 'edgepath'+i;},
+               'dx':80,
+               'dy':0
+               });
+
+edges_text.append('textPath')
+.attr('xlink:href',function(d,i) {return '#edgepath'+i})
+.style("pointer-events", "none")
+.text(function(d){return d.rela;});
+
+var circle = svg.append("g").selectAll("circle")
+    .data(force.nodes())
+    .enter().append("circle")
+    .style("fill",function(node){
+        var color;
+        var link=links[node.index];
+		color="#F9EBF9";
+        return color;
+    })
+    .style('stroke',function(node){ 
+        var color;
+        var link=links[node.index];
+		color="#A254A2";
+        return color;
+    })
+    .attr("r", 28)
+    .on("click",function(node)
+	{
+        edges_line.style("stroke-width",function(line){
+            console.log(line);
+            if(line.source.name==node.name || line.target.name==node.name){
+                return 4;
+            }else{
+                return 0.5;
+            }
+        });
+    })
+    .call(force.drag);
+
+var text = svg.append("g").selectAll("text")
+    .data(force.nodes())
+    .enter()
+    .append("text")
+    .attr("dy", ".35em")  
+    .attr("text-anchor", "middle")
+    .style('fill',function(node){
+        var color;
+        var link=links[node.index];
+		color="#A254A2";
+        return color;
+    }).attr('x',function(d){
+        var re_en = /[a-zA-Z]+/g;
+        if(d.name.match(re_en)){
+             d3.select(this).append('tspan')
+             .attr('x',0)
+             .attr('y',2)
+             .text(function(){return d.name;});
+        }
+        
+        else if(d.name.length<=4){
+             d3.select(this).append('tspan')
+            .attr('x',0)
+            .attr('y',2)
+            .text(function(){return d.name;});
+        }else{
+            var top=d.name.substring(0,4);
+            var bot=d.name.substring(4,d.name.length);
+
+            d3.select(this).text(function(){return '';});
+
+            d3.select(this).append('tspan')
+                .attr('x',0)
+                .attr('y',-7)
+                .text(function(){return top;});
+
+            d3.select(this).append('tspan')
+                .attr('x',0)
+                .attr('y',10)
+                .text(function(){return bot;});
+        }
+    });
+
+function tick() {
+  circle.attr("transform", transform1);
+  text.attr("transform", transform2);
+
+  edges_line.attr('d', function(d) { 
+      var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
+      return path;
+  });  
+    
+  edges_text.attr('transform',function(d,i){
+        if (d.target.x<d.source.x){
+            bbox = this.getBBox();
+            rx = bbox.x+bbox.width/2;
+            ry = bbox.y+bbox.height/2;
+            return 'rotate(180 '+rx+' '+ry+')';
+        }
+        else {
+            return 'rotate(0)';
+        }
+   });
+}
+
+function linkArc(d) {
+  return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y
+}
+
+function transform1(d) {
+  return "translate(" + d.x + "," + d.y + ")";
+}
+function transform2(d) {
+      return "translate(" + (d.x) + "," + d.y + ")";
+}
+
+</script>
+   
+</body>
+</html>
